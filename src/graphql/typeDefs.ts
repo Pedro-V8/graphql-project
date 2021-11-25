@@ -1,5 +1,6 @@
-import { fileLoader } from 'merge-graphql-schemas';
+import { loadFilesSync } from '@graphql-tools/load-files';
+import { mergeTypeDefs } from '@graphql-tools/merge';
 import path from 'path';
 
-export const typeDefs = fileLoader(path.join(__dirname , '../modules' , '**', '*.gql'))
-console.log(typeDefs)
+const typesArr = loadFilesSync(path.join(__dirname , '../modules' , '**', '*.gql'));
+export const typeDefs = mergeTypeDefs(typesArr);
