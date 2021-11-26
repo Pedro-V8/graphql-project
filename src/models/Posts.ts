@@ -1,4 +1,4 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
 const Schema = new mongoose.Schema({
     title: {
@@ -9,7 +9,7 @@ const Schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    author: {
+    user: {
        type: mongoose.Schema.Types.ObjectId,
        ref: 'User' 
     }

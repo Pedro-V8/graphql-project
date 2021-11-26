@@ -3,17 +3,19 @@ type User{
     name: String
     email: String
     is_Active: Boolean
+    posts: [Post]
 }
 
 type Query {
-    users: [User]!
+    users: [User!]!
     user(id: ID!): User!
 }
 
 input UserInput {
     name: String!
     email: String!
-    is_Active: Boolean!
+    is_Active: Boolean! 
+    posts: [String]
 }
 
 type Mutation {

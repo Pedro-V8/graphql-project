@@ -1,7 +1,18 @@
+import User from '../../models/User';
+import Post from '../../models/Posts';
+
 export default {
-    Query: {
-        posts: () => 'hello',
-        post: (id: number) => 'heelo2'
+    Post: {
+        user: async (post: any) => await User.findById(post.user),
     },
-    Mutation: {}
+    Query: {
+        posts: async () => await Post.find(),
+    },
+    Mutation: {
+        createPost: async (_:any ,  {data}:any)  => await Post.create(data),
+        deletePost: async (_:any ,  {id}: any)  => {
+            await Post.findByIdAndDelete(id);
+            return true;
+        },
+    }
 }
