@@ -8,11 +8,11 @@ type Post{
 input PostInput {
     title: String!
     content: String!
-    user: ID
+    user: ID!
 }
 
 type Query {
-    posts: [Post!]!
+    posts: [Post!]! 
     post(id: ID!): Post!
 }
 
