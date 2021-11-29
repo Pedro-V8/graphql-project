@@ -6,12 +6,27 @@ function deletaPost(arr: any){
     });
 }
 
+function retornaPosts(arr: any){
+    const mArr: any = [];
+    arr.forEach((e: any) =>{
+        async function teste() {
+            const myPost = await Post.findById(e)
+            mArr.push(myPost)
+        }
+        teste()
+    });
+    //console.log(arr);
+    return mArr;
+}
+
 export default {
     Query: {
         users: async () => await User.find(),
         user: async (_: any, {id}: any) =>{
             const user =  await User.findById(id)
-            console.log(user)
+            const usArr: any = retornaPosts(user.posts);
+            
+            //console.log(user);
             return user;
         },
     },

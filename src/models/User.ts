@@ -14,9 +14,9 @@ const Schema = new mongoose.Schema({
         required: false,
         default: true
     },
-    posts: [
-        { type: mongoose.Schema.Types.ObjectId, ref: 'Posts'}
-    ]
+    posts: {
+        type: mongoose.Schema.Types.Array, ref: 'Posts'
+    }
 });
 
 export default mongoose.model('User' , Schema);
