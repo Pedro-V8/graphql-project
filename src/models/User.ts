@@ -9,6 +9,10 @@ const Schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    password: {
+        type: String,
+        required: true,
+    },
     is_Active: {
         type: Boolean,
         required: false,

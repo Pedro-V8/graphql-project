@@ -5,28 +5,28 @@ function deletaPost(arr: any){
         async () => await Post.deleteOne(e)
     });
 }
-
+let mArr: Array<any> = [];
+let post: any;
+const teste = async (id: any) => {
+    await Post.findOne(id).then(async(ps) => await mArr.push(ps)) 
+    //console.log(mArr)
+}
 function retornaPosts(arr: any){
-    const mArr: any = [];
-    arr.forEach((e: any) =>{
-        async function teste() {
-            const myPost = await Post.findById(e)
-            mArr.push(myPost)
-        }
-        teste()
-    });
-    //console.log(arr);
-    return mArr;
+    arr.map((el: any) => { 
+        teste(el) 
+        //console.log((el))
+    })
 }
 
 export default {
     Query: {
         users: async () => await User.find(),
         user: async (_: any, {id}: any) =>{
-            const user =  await User.findById(id)
-            const usArr: any = retornaPosts(user.posts);
-            
-            //console.log(user);
+            const user =  await User.findById(id).populate('posts');
+            // retornaPosts(user.posts);
+            // user.posts.push(mArr);
+            // console.log(user.posts);
+
             return user;
         },
     },
