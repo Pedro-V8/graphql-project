@@ -1,0 +1,11 @@
+type Auth{
+    user: User
+}
+
+input AuthInput {
+    email: String
+}
+
+type Mutation{
+    authenticate(data: AuthInput!): Auth!
+}
