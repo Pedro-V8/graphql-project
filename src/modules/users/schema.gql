@@ -1,7 +1,8 @@
 type User {
-    _id: ID!
+    _id: ID
     name: String
     email: String
+    password: String
     is_Active: Boolean 
     posts: [Post]
 }
@@ -14,6 +15,7 @@ type Query {
 input UserInput {
     name: String!
     email: String!
+    password: String!
     is_Active: Boolean! 
 }
 
