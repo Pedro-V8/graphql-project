@@ -16,11 +16,11 @@ input UserInput {
     name: String!
     email: String!
     password: String!
-    is_Active: Boolean! 
+    is_Active: Boolean!
 }
 
 type Mutation {
-    createUser(data: UserInput!): User!
+    createUser(data: UserInput!): User
     updateUser(id: ID! , data: UserInput!): User!
     deleteUser(id: ID!): Boolean
 }

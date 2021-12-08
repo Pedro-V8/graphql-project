@@ -1,5 +1,6 @@
-type Auth{
+type Auth {
     user: User
+    error: String
 }
 
 input AuthInput {

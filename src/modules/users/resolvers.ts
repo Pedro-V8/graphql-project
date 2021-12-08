@@ -21,10 +21,13 @@ export default {
     Mutation: {
         createUser: async (_:any , {data}:any) => {
             const user: any = register(data);
-            console.log(user);
+            // console.log(user);
             return user;
         },
         updateUser: async (_: any , {id , data }: any) => await User.findOneAndUpdate(id , data),
-        deleteUser: async (_: any , {id }: any ) => await User.findByIdAndDelete(id),
+        deleteUser: async (_: any , {id }: any ) => {
+            await User.findByIdAndDelete(id);
+            return true;
+        },
     },
 };
