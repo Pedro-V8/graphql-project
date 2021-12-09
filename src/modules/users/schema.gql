@@ -5,6 +5,7 @@ type User {
     password: String
     is_Active: Boolean 
     posts: [Post]
+    error: String
 }
 
 type Query {

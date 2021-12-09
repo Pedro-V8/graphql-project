@@ -8,7 +8,6 @@ function deletaPost(arr: any){
     });
 }
 
-
 export default {
     Query: {
         users: async () => await User.find(),

@@ -1,11 +1,16 @@
 import User from '../models/User';
-import { sign } from 'jsonwebtoken';
+// import { sign } from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
 export const register = async(obj: any) => {
-    const user = await User.create(obj);
-    console.log(user)
-    return user;
+    const findUser = await User.findOne({ email: obj.email });
+    if(findUser){
+        return { error: "User Already exists" };
+    }else{
+        const user = await User.create(obj);
+
+        return user;
+    }
 };
 
 export const signIn = async({ email , password }: any) => {
