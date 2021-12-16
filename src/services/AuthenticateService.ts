@@ -1,6 +1,6 @@
 import User from '../models/User';
-// import { sign } from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import generateToken from './GenerateToken';
 
 export const register = async(obj: any) => {
     const findUser = await User.findOne({ email: obj.email });
@@ -20,7 +20,9 @@ export const signIn = async({ email , password }: any) => {
         if(!await bcrypt.compare(password , user.password)){
             return { error: "Wrong Password" };
         }else{
-           return { user }; 
+            const token = generateToken({} , user.id);
+
+            return { user , token }; 
         }
     }else{
         return { error: "Could not find User or Wrong Passwor" };

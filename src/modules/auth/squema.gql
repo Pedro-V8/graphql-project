@@ -1,5 +1,11 @@
 type Auth {
     user: User
+    token: String
+    error: String
+}
+
+type regUser {
+    user: User
     error: String
 }
 
@@ -8,6 +14,14 @@ input AuthInput {
     password: String
 }
 
+input UserInput {
+    name: String!
+    email: String!
+    password: String!
+    is_Active: Boolean!
+}
+
 type Mutation{
     authenticate(data: AuthInput!): Auth!
+    registerUser(data: UserInput!): regUser!
 }

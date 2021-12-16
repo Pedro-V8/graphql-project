@@ -8,9 +8,9 @@ type User {
     error: String
 }
 
-type Query {
-    users: [User!]!
-    user(id: ID!): User!
+type regUser {
+    user: User
+    error: String
 }
 
 input UserInput {
@@ -18,6 +18,11 @@ input UserInput {
     email: String!
     password: String!
     is_Active: Boolean!
+}
+
+type Query {
+    users: [User!]!
+    user(id: String): User!
 }
 
 type Mutation {

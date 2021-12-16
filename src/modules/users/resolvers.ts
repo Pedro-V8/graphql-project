@@ -19,7 +19,7 @@ export default {
     },
     Mutation: {
         createUser: async (_:any , {data}:any) => {
-            const user: any = register(data);
+            const user: any = await register(data);
             // console.log(user);
             return user;
         },
